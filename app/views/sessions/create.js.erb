@@ -1,0 +1,6 @@
+<% if session[:user_id] %>
+    window.location = '<%= root_url %>'
+<% else %>
+$('#myModal').html("<%= j(render partial: 'new') %>");
+$('#myModal').modal();
+<% end %>
