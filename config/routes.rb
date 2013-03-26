@@ -5,6 +5,7 @@ Mandarin::Application.routes.draw do
   get   '/login', :to => 'sessions#new', :as => :login
   match '/sign_up', :to => 'users#new', :as => :sign_up
   match '/auth/:provider/callback', :to => 'sessions#create'
+  match '/sign_in', :to => 'sessions#create', :as => 'sign_in'
   match '/auth/failure', :to => 'sessions#failure'
   delete '/logout', :to => 'sessions#destroy'
   get '/search', :to => 'welcome#search'

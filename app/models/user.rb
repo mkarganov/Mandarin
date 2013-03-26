@@ -10,6 +10,15 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates :password, :presence => :true, :on => :create
 
+  def self.authenticate(email, password)
+    user = find_by_email(email)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      user
+    else
+      nil
+    end
+  end
+
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
