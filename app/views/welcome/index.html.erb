@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+  <h1>Welcome to Mandarin</h1>
+  <% if current_user %>
+    <p>You are logged in as <%= current_user.name %><br/><%= link_to "Logout", logout_path, :method => :delete %></p>
+  <% else %>
+    <p><%= link_to "Login", login_path, :remote => :true %> or <%= link_to "Sign up", sign_up_path, :remote => :true %></p>
+  <% end %>
+

@@ -1,0 +1,7 @@
+<% if @user.valid?(:sign_up) %>
+  window.location = "<%= root_url %>"
+<% else %>
+  $('#myModal').html("<%= j(render partial: 'form') %>");
+  $('#myModal').modal();
+<% end %>
+
